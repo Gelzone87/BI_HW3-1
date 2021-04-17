@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawVisualization);
+
+        function drawVisualization() {
+            // Some raw data (not necessarily accurate)
+            var data = google.visualization.arrayToDataTable([
+                ['Month', '翡翠', '石門', '德基', '日月潭', '曾文', 'Average'],
+                ['2021/01', 311.06, 131.88, 4941.8, 9651.5, 9466, 4900.448],
+                ['2021/02', 310.97, 114.76, 3055.2, 7694.9, 7595, 3754.166],
+                ['2021/03', 289.09, 114.76, 1417.1, 5292.1, 7803, 2983.21],
+                ['2021/04', 247.21, 53.40, 794.5, 3802, 5931, 2165.622],
+            ]);
+
+            var options = {
+                title: '2021台灣水庫有效蓄水量',
+                vAxis: {
+                    title: '立方公尺(萬)'
+                },
+                hAxis: {
+                    title: '月份'
+                },
+                seriesType: 'bars',
+                series: {
+                    5: {
+                        type: 'line'
+                    }
+                }
+            };
+
+            var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>
